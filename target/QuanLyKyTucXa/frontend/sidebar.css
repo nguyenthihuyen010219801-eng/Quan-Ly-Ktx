@@ -1,0 +1,223 @@
+#sidebarContainer{
+    flex:0 0 auto;
+}
+
+.sidebar{
+    width:268px;
+    height:100vh;
+    flex:0 0 268px;
+    background:
+        radial-gradient(circle at 48px 40px, rgba(8,39,76,0.62), transparent 120px),
+        linear-gradient(160deg,#000b1f 0%,#01152d 58%,#00091a 100%);
+    color:#fff;
+    padding:18px 14px;
+    display:flex;
+    flex-direction:column;
+    box-shadow:12px 0 30px rgba(2,24,47,0.12);
+    overflow-x:hidden;
+    transition:width .22s ease, flex-basis .22s ease, padding .22s ease;
+}
+
+.brand{
+    height:84px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:0 8px 16px;
+    border-bottom:1px solid rgba(255,255,255,0.12);
+    position:relative;
+}
+
+.brand-copy{min-width:0;}
+
+.sidebar-toggle{
+    width:32px;
+    height:32px;
+    flex:0 0 32px;
+    margin-left:auto;
+    padding:0;
+    border:0;
+    border-radius:7px;
+    background:transparent;
+    color:rgba(255,255,255,.88);
+    box-shadow:none;
+    display:grid;
+    place-items:center;
+    font-size:17px;
+    transition:background .18s ease, color .18s ease;
+}
+
+.sidebar-toggle:hover,
+.sidebar-toggle:focus-visible{
+    background:rgba(255,255,255,.10);
+    color:#fff;
+}
+
+.brand img{
+    width:68px;
+    height:68px;
+    object-fit:cover;
+    border-radius:0;
+    background:#000b1f;
+    -webkit-mask-image:radial-gradient(ellipse at center, #000 0 68%, rgba(0,0,0,0.78) 80%, transparent 95%);
+    mask-image:radial-gradient(ellipse at center, #000 0 68%, rgba(0,0,0,0.78) 80%, transparent 95%);
+}
+
+.brand strong{
+    display:block;
+    color:var(--gold);
+    font-size:20px;
+    line-height:1;
+}
+
+.brand span,
+.account span{
+    display:block;
+    color:rgba(255,255,255,0.72);
+    font-size:13px;
+    margin-top:4px;
+}
+
+.menu{
+    display:grid;
+    grid-auto-rows:minmax(0,1fr);
+    gap:6px;
+    margin-top:14px;
+    flex:1;
+    min-height:0;
+}
+
+.menu-item{
+    text-decoration:none;
+    width:100%;
+    height:auto;
+    min-height:0;
+    border:0;
+    border-radius:8px;
+    background:transparent;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:0 14px;
+    font-weight:700;
+    text-align:left;
+    transition:background 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+}
+
+.menu-item i{
+    width:21px;
+    font-size:17px;
+    text-align:center;
+    opacity:0.96;
+}
+
+.menu-item span{
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    font-size:14px;
+}
+
+.menu-item.active,
+.menu-item:hover{
+    background:linear-gradient(135deg,#0b73ef,#075ec9);
+    box-shadow:0 10px 22px rgba(8,103,218,0.35);
+    transform:translateX(2px);
+}
+
+.menu-item.muted{
+    opacity:0.92;
+}
+
+.menu-item.muted:hover{
+    background:rgba(255,255,255,0.08);
+    box-shadow:none;
+}
+
+.sidebar-footer{
+    display:grid;
+    gap:10px;
+    padding:12px 4px 0;
+    margin-top:12px;
+    border-top:1px solid rgba(255,255,255,0.12);
+}
+
+.account{
+    padding:0 4px;
+    display:flex;
+    align-items:center;
+    gap:12px;
+}
+
+.logout-btn{
+    width:100%;
+    height:42px;
+    border:1px solid rgba(255,255,255,0.16);
+    border-radius:9px;
+    background:rgba(255,255,255,0.08);
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    font-weight:800;
+    transition:background 0.18s ease, transform 0.18s ease;
+}
+
+.logout-btn:hover{
+    background:rgba(239,68,68,0.9);
+    transform:translateY(-1px);
+}
+
+.sidebar.collapsed{
+    width:86px;
+    flex-basis:86px;
+    padding-left:10px;
+    padding-right:10px;
+}
+
+.sidebar.collapsed .brand{
+    height:104px;
+    padding:0 0 12px;
+    flex-direction:column;
+    justify-content:center;
+    gap:4px;
+}
+
+.sidebar.collapsed .brand img{width:54px;height:54px;}
+.sidebar.collapsed .brand-copy,
+.sidebar.collapsed .menu-item span,
+.sidebar.collapsed .account > div:not(.avatar),
+.sidebar.collapsed .logout-btn span{display:none;}
+.sidebar.collapsed .sidebar-toggle{width:30px;height:30px;margin:0;}
+.sidebar.collapsed .menu-item{justify-content:center;padding:0;}
+.sidebar.collapsed .menu-item i{width:auto;}
+.sidebar.collapsed .menu-item:hover{transform:none;}
+.sidebar.collapsed .account{justify-content:center;padding:0;}
+.sidebar.collapsed .logout-btn{width:48px;margin:0 auto;}
+
+@media(max-width:900px){
+    .sidebar{
+        width:86px;
+        flex-basis:86px;
+    }
+
+    .brand-copy,
+    .menu-item span,
+    .account div,
+    .logout-btn span{
+        display:none;
+    }
+
+    .logout-btn{
+        width:48px;
+        margin:0 auto;
+    }
+
+    .brand{height:104px;padding:0 0 12px;flex-direction:column;justify-content:center;gap:4px;}
+    .brand img{width:54px;height:54px;}
+    .sidebar-toggle{width:30px;height:30px;margin:0;}
+    .menu-item{justify-content:center;padding:0;}
+    .account{justify-content:center;padding:0;}
+}

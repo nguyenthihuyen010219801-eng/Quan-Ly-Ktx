@@ -1,0 +1,5 @@
+<%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
+<!DOCTYPE html><html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Không có quyền truy cập</title><link rel="stylesheet" href="${pageContext.request.contextPath}/frontend/styleManage.css">
+<style>body{font-family:Nunito,Arial,sans-serif;background:#f4f7fb;color:#17233a;display:grid;place-items:center;min-height:100vh;margin:0}.denied{width:min(520px,calc(100% - 40px));padding:42px;text-align:center;background:#fff;border:1px solid #e1e8f1;border-radius:14px;box-shadow:0 18px 50px rgba(23,43,77,.1)}.denied h1{color:#d9363e}.denied a{display:inline-block;margin-top:18px;padding:11px 18px;border-radius:8px;background:#0869e8;color:#fff;text-decoration:none;font-weight:800}</style></head>
+<body><main class="denied"><h1>Không có quyền truy cập</h1><p>Bạn không có quyền truy cập chức năng này.</p><a href="${pageContext.request.contextPath}/manage.jsp">Quay lại Tổng quan</a></main></body></html>

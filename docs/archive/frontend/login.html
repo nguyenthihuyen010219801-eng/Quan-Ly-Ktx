@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>Đăng nhập Ký túc xá</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/frontend/Login.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<div class="login-page">
+
+    <div class="left-panel">
+        <div class="main-logo" aria-hidden="true"></div>
+
+        <div class="features">
+            <div>
+                <i class="fa-solid fa-shield-halved"></i>
+                <h4>AN TOÀN</h4>
+                <p>Bảo mật thông tin</p>
+            </div>
+
+            <div>
+                <i class="fa-solid fa-users"></i>
+                <h4>HIỆU QUẢ</h4>
+                <p>Quản lý toàn diện</p>
+            </div>
+
+            <div>
+                <i class="fa-solid fa-chart-line"></i>
+                <h4>TIỆN LỢI</h4>
+                <p>Thao tác dễ dàng</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="right-panel">
+
+        <div class="login-box">
+            <div class="decor">◆</div>
+
+            <h2>ĐĂNG NHẬP HỆ THỐNG</h2>
+
+            <div class="input-box">
+                <i class="fa-solid fa-user"></i>
+                <input type="text" id="username" placeholder="Tên đăng nhập">
+            </div>
+
+            <div class="input-box">
+                <i class="fa-solid fa-lock"></i>
+                <input type="password" id="password" placeholder="Mật khẩu">
+                <i class="fa-solid fa-eye-slash eye" onclick="togglePassword()"></i>
+            </div>
+
+            <div class="options">
+                <label>
+                    <input type="checkbox" checked>
+                    Ghi nhớ đăng nhập
+                </label>
+
+                <a href="#">Quên mật khẩu?</a>
+            </div>
+
+            <button onclick="login()">
+                <i class="fa-solid fa-right-to-bracket"></i>
+                ĐĂNG NHẬP
+            </button>
+
+            <div class="bottom-icon">
+                <i class="fa-solid fa-lock"></i>
+            </div>
+
+            <p class="footer-text">
+                Hệ thống quản lý ký túc xá
+            </p>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+    const API_URL = "http://localhost:3000";
+
+function togglePassword() {
+    const password = document.getElementById("password");
+
+    if (password.type === "password") {
+        password.type = "text";
+    } else {
+        password.type = "password";
+    }
+}
+
+function login() {
+    const username = document.getElementById("username").value.trim();
+    const password = document.getElementById("password").value.trim();
+
+    if (username === "" || password === "") {
+        alert("Vui lòng nhập đầy đủ tên đăng nhập và mật khẩu");
+        return;
+    }
+
+    fetch(API_URL + "/api/login", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+            username: username,
+            password: password
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.success) {
+            alert("Đăng nhập thành công");
+            window.location.href = "/frontend/manage.html";
+        } else {
+            alert(data.message);
+        }
+    })
+    .catch(err => {
+        console.log(err);
+        alert("Không kết nối được server");
+    });
+}
+
+document.addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        event.preventDefault();
+        login();
+    }
+});
+</script>
+
+</body>
+</html>
