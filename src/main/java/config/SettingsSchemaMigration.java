@@ -1,11 +1,10 @@
-package java.config;
+package com.dormitory.config;
 
+import jakarta.servlet.ServletContext;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.util.LinkedHashMap;
 import java.util.Map;
-
-import jakarta.servlet.ServletContext;
 
 public final class SettingsSchemaMigration {
     private SettingsSchemaMigration() {}

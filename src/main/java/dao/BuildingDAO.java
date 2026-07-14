@@ -1,13 +1,9 @@
 package com.dormitory.dao;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import com.dormitory.model.Building;
+import com.dormitory.util.DBConnection;
+import java.sql.*;
+import java.util.*;
 
 public class BuildingDAO extends DaoSupport {
     public List<Map<String, Object>> search(String keyword) throws SQLException {

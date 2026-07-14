@@ -1,13 +1,15 @@
 package com.dormitory.controller;
 
-import com.dormitory.dao.BuildingDAO;
-import com.dormitory.model.Building;
-import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
-import jakarta.servlet.http.*;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Map;
+
+import dao.BuildingDAO;
+import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
+import jakarta.servlet.http.HttpServletRequest;
+import jakarta.servlet.http.HttpServletResponse;
+import model.Building;
 
 @WebServlet("/buildings")
 public class BuildingServlet extends BaseServlet {
