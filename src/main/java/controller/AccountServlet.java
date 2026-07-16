@@ -1,7 +1,7 @@
-package com.dormitory.controller;
+package controller;
 
-import com.dormitory.dao.UserDAO;
-import com.dormitory.util.PasswordUtil;
+import dao.UserDAO;
+import util.PasswordUtil;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

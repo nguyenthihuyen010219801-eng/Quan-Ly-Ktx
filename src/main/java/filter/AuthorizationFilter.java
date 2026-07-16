@@ -1,4 +1,4 @@
-package com.dormitory.filter;
+package filter;
 
 import com.google.gson.Gson;
 import jakarta.servlet.Filter;
@@ -86,7 +86,7 @@ public class AuthorizationFilter implements Filter {
         return path.equals("/") || path.equals("/index.jsp") || path.equals("/login.jsp") ||
                path.equals("/access-denied.jsp") || path.equals("/api/login") ||
                path.equals("/api/session") || path.equals("/api/logout") ||
-               path.startsWith("/frontend/") || path.startsWith("/images/") || path.startsWith("/logo/") ||
+               path.startsWith("/frontend/") || path.startsWith("/images/") ||
                path.equals("/favicon.ico");
     }
 

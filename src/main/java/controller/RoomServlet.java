@@ -1,7 +1,7 @@
-package com.dormitory.controller;
+package controller;
 
-import com.dormitory.dao.RoomDAO;
-import com.dormitory.model.Room;
+import dao.RoomDAO;
+import model.Room;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;

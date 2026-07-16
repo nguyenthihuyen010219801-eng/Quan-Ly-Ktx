@@ -1,6 +1,6 @@
-package com.dormitory.controller;
+package controller;
 
-import com.dormitory.config.Database;
+import config.Database;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;
 import java.io.IOException;

@@ -51,7 +51,7 @@ Ngoài các chức năng quản lý dữ liệu, hệ thống còn có phần th
 
 3. Mở MySQL Workbench và chạy toàn bộ file `database/FullDatabase.sql`. File này tạo database `quan_ly_ky_tuc_xa`, các bảng và dữ liệu ban đầu.
 
-4. Cấu hình kết nối tại `src/main/java/com/dormitory/config/Database.java`. Giá trị mặc định là MySQL tại `localhost:3306`, tài khoản `root`. Có thể cấu hình bằng các biến môi trường `DB_SERVER_URL`, `DB_URL`, `DB_USER` và `DB_PASSWORD`.
+4. Cấu hình kết nối bằng các biến môi trường `DB_SERVER_URL`, `DB_URL`, `DB_USER` và `DB_PASSWORD`. Ứng dụng mặc định kết nối MySQL tại `localhost:3306`, tài khoản `root` và không lưu mật khẩu database trong source code.
 
 5. Build project tại thư mục chứa `pom.xml` bằng lệnh:
 
@@ -79,7 +79,22 @@ http://localhost:8080/QuanLyKyTucXa/
 
 Có thể sửa `JAVA_HOME`, `MAVEN_HOME` và `CATALINA_HOME` trong `run.bat`, sau đó chạy file này để build và deploy project.
 
-## 6. Tài khoản demo
+## 6. Cấu trúc thư mục
+
+```text
+QuanLyKyTucXa/
+├── src/main/java/    # Java Servlet, DAO, Model và cấu hình
+├── web/              # JSP, CSS, JavaScript và hình ảnh
+├── database/         # FullDatabase.sql duy nhất
+├── report/           # Báo cáo cuối kỳ
+├── slides/           # Slide thuyết trình
+├── video/            # Video demo
+├── pom.xml
+├── run.bat
+└── README.md
+```
+
+## 7. Tài khoản demo
 
 Quản lý:
 
@@ -87,7 +102,7 @@ Username: quanly
 
 Password: 123456
 
-## 7. Video thuyết trình và demo
+## 8. Video thuyết trình và demo
 
 Video demo:
 

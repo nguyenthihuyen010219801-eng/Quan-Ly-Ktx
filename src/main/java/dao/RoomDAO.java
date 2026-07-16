@@ -1,7 +1,7 @@
-package com.dormitory.dao;
+package dao;
 
-import com.dormitory.model.Room;
-import com.dormitory.util.DBConnection;
+import model.Room;
+import util.DBConnection;
 import java.sql.*;
 import java.util.*;
 

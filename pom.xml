@@ -41,11 +41,23 @@
 
     <build>
         <finalName>QuanLyKyTucXa</finalName>
+        <resources>
+            <resource>
+                <directory>database</directory>
+                <includes>
+                    <include>FullDatabase.sql</include>
+                </includes>
+                <targetPath>sql</targetPath>
+            </resource>
+        </resources>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.4.0</version>
+                <configuration>
+                    <warSourceDirectory>web</warSourceDirectory>
+                </configuration>
             </plugin>
         </plugins>
     </build>

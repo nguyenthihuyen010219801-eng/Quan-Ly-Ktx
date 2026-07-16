@@ -1,4 +1,4 @@
-package com.dormitory.controller;
+package controller;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;

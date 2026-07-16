@@ -1,4 +1,4 @@
-package com.dormitory.config;
+package config;
 
 import jakarta.servlet.ServletContext;
 import java.io.BufferedReader;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public final class DatabaseInitializer {
-    private static final String SCRIPT_PATH = "/sql/quan_ly_ky_tuc_xa.sql";
+    private static final String SCRIPT_PATH = "/sql/FullDatabase.sql";
 
     private DatabaseInitializer() {
     }
@@ -63,25 +63,46 @@ public final class DatabaseInitializer {
         return builder.toString();
     }
 
-    private static List<String> splitStatements(String sql) {
+    static List<String> splitStatements(String sql) {
         List<String> statements = new ArrayList<>();
         StringBuilder current = new StringBuilder();
+        String delimiter = ";";
         boolean inSingleQuote = false;
+        boolean inDoubleQuote = false;
+        boolean inBacktick = false;
 
-        for (int index = 0; index < sql.length(); index++) {
-            char value = sql.charAt(index);
-            char previous = index > 0 ? sql.charAt(index - 1) : '\0';
-
-            if (value == '\'' && previous != '\\') {
-                inSingleQuote = !inSingleQuote;
+        String[] lines = sql.split("\\R", -1);
+        for (String line : lines) {
+            String trimmed = line.trim();
+            if (current.toString().isBlank() && trimmed.toUpperCase().startsWith("DELIMITER ")) {
+                delimiter = trimmed.substring("DELIMITER ".length()).trim();
+                continue;
             }
 
-            if (value == ';' && !inSingleQuote) {
-                statements.add(current.toString().trim());
-                current.setLength(0);
-            } else {
-                current.append(value);
+            for (int index = 0; index < line.length(); index++) {
+                char value = line.charAt(index);
+                char previous = index > 0 ? line.charAt(index - 1) : '\0';
+
+                if (value == '\'' && previous != '\\' && !inDoubleQuote && !inBacktick) {
+                    inSingleQuote = !inSingleQuote;
+                } else if (value == '"' && previous != '\\' && !inSingleQuote && !inBacktick) {
+                    inDoubleQuote = !inDoubleQuote;
+                } else if (value == '`' && !inSingleQuote && !inDoubleQuote) {
+                    inBacktick = !inBacktick;
+                }
+
+                if (!inSingleQuote && !inDoubleQuote && !inBacktick && line.startsWith(delimiter, index)) {
+                    String statement = current.toString().trim();
+                    if (!statement.isEmpty()) {
+                        statements.add(statement);
+                    }
+                    current.setLength(0);
+                    index += delimiter.length() - 1;
+                } else {
+                    current.append(value);
+                }
             }
+            current.append('\n');
         }
 
         String last = current.toString().trim();
@@ -90,7 +111,6 @@ public final class DatabaseInitializer {
         }
         return statements;
     }
-
     private static String seedTable(String command) {
         String normalized = command.stripLeading().toLowerCase();
         if (normalized.startsWith("insert ignore into users")) {

@@ -1,4 +1,4 @@
-package com.dormitory.dao;
+package dao;
 
 import java.math.BigDecimal;
 import java.sql.*;

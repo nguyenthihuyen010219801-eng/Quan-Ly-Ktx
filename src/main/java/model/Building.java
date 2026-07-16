@@ -1,4 +1,4 @@
-package com.dormitory.model;
+package model;
 
 public class Building {
     public Integer id, floors, roomCount;

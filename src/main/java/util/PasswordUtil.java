@@ -1,4 +1,4 @@
-package com.dormitory.util;
+package util;
 
 import org.mindrot.jbcrypt.BCrypt;
 

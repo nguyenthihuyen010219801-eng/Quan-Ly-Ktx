@@ -1,4 +1,4 @@
-package com.dormitory.config;
+package config;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -14,7 +14,7 @@ public final class Database {
             "jdbc:mysql://localhost:3306/quan_ly_ky_tuc_xa?useUnicode=true&characterEncoding=UTF-8&serverTimezone=Asia/Ho_Chi_Minh"
     );
     private static final String USER = getConfig("DB_USER", "root");
-    private static final String PASSWORD = getConfig("DB_PASSWORD", "Mn2607@");
+    private static final String PASSWORD = getConfig("DB_PASSWORD", "");
 
     static {
         try {

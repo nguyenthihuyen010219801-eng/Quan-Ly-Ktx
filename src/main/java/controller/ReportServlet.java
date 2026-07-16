@@ -1,6 +1,6 @@
-package com.dormitory.controller;
+package controller;
 
-import com.dormitory.dao.ReportDAO;
+import dao.ReportDAO;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;

@@ -1,7 +1,7 @@
-package com.dormitory.controller;
+package controller;
 
-import com.dormitory.dao.ServiceDAO;
-import com.dormitory.model.Service;
+import dao.ServiceDAO;
+import model.Service;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.*;

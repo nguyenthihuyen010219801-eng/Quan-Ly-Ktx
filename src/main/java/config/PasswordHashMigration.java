@@ -1,4 +1,4 @@
-package com.dormitory.config;
+package config;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;

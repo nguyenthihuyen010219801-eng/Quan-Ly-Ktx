@@ -1,6 +1,6 @@
-package com.dormitory.dao;
+package dao;
 
-import com.dormitory.config.Database;
+import config.Database;
 
 import java.sql.Connection;
 import java.sql.Date;

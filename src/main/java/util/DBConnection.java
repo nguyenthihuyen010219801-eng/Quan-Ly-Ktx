@@ -1,6 +1,6 @@
-package com.dormitory.util;
+package util;
 
-import com.dormitory.config.Database;
+import config.Database;
 import java.sql.Connection;
 import java.sql.SQLException;
 
